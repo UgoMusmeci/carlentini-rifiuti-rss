@@ -49,32 +49,32 @@ MONTH_NAMES = {
 
 WASTE_SCHEDULE = {
     0: (
-        "Raccolta Differenziata - esporre umido",
+        "Raccolta Differenziata - Stasera esporre umido",
         "Si ricorda di esporre l'umido entro le ore 8:00 di domani."
     ),
 
     1: (
-        "Raccolta Differenziata - esporre carta e cartone",
+        "Raccolta Differenziata - Stasera esporre carta e cartone",
         "Si ricorda di esporre carta e cartone entro le ore 8:00 di domani."
     ),
 
     2: (
-        "Raccolta Differenziata - esporre vetro e alluminio",
+        "Raccolta Differenziata - Stasera esporre vetro e alluminio",
         "Si ricorda di esporre vetro e alluminio entro le ore 8:00 di domani."
     ),
 
     3: (
-        "Raccolta Differenziata - esporre secco residuo",
+        "Raccolta Differenziata - Stasera esporre secco residuo",
         "Si ricorda di esporre il secco residuo entro le ore 8:00 di domani."
     ),
 
     4: (
-        "Raccolta Differenziata - esporre la plastica",
+        "Raccolta Differenziata - Stasera esporre la plastica",
         "Si ricorda di esporre la plastica entro le ore 8:00 di domani."
     ),
 
     5: (
-        "Raccolta Differenziata - esporre l'umido",
+        "Raccolta Differenziata - Stasera esporre l'umido",
         "Si ricorda di esporre l'umido entro le ore 8:00 di domani."
     ),
 
@@ -123,7 +123,7 @@ else:
         f"{MONTH_NAMES[tomorrow.month]}"
     )
 
-    title = f"{waste_title} - {formatted_date}"
+    title = waste_title
 
     unique_id = (
         f"{tomorrow.strftime('%Y%m%d')}-"
