@@ -152,7 +152,10 @@ fg.language("it")
 
 fe = fg.add_entry()
 
-entry_link = f"{BASE_URL}/news/{unique_id}"
+entry_link = (
+    "https://www.aziendaspecialecarlentini.it/"
+    "wp-content/uploads/2026/05/Carlentini-min.pdf"
+)
 
 fe.id(entry_link)
 
