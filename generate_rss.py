@@ -49,37 +49,37 @@ MONTH_NAMES = {
 
 WASTE_SCHEDULE = {
     0: (
-        "🍂 Raccolta Differenziata - Raccolta umido",
+        "Raccolta Differenziata - esporre umido",
         "Si ricorda di esporre l'umido entro le ore 8:00 di domani."
     ),
 
     1: (
-        "📦 Raccolta Differenziata - Raccolta carta e cartone",
+        "Raccolta Differenziata - esporre carta e cartone",
         "Si ricorda di esporre carta e cartone entro le ore 8:00 di domani."
     ),
 
     2: (
-        "♻️ Raccolta Differenziata - Raccolta vetro e alluminio",
+        "Raccolta Differenziata - esporre vetro e alluminio",
         "Si ricorda di esporre vetro e alluminio entro le ore 8:00 di domani."
     ),
 
     3: (
-        "🗑️ Raccolta Differenziata - Raccolta secco residuo",
+        "Raccolta Differenziata - esporre secco residuo",
         "Si ricorda di esporre il secco residuo entro le ore 8:00 di domani."
     ),
 
     4: (
-        "🟡 Raccolta Differenziata - Raccolta plastica",
+        "Raccolta Differenziata - esporre la plastica",
         "Si ricorda di esporre la plastica entro le ore 8:00 di domani."
     ),
 
     5: (
-        "🍂 Raccolta Differenziata - Raccolta umido",
+        "Raccolta Differenziata - esporre l'umido",
         "Si ricorda di esporre l'umido entro le ore 8:00 di domani."
     ),
 
     6: (
-        "✅ Raccolta Differenziata - Nessun conferimento",
+        "Raccolta Differenziata - Nessun conferimento",
         "Domani non è previsto alcun conferimento."
     )
 }
