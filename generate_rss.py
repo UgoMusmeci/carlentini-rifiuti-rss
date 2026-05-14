@@ -1,14 +1,12 @@
 from feedgen.feed import FeedGenerator
-from datetime import datetime
+from datetime import datetime, timedelta
 import pytz
-import random
-import os
 
 # =========================================
 # CONFIG
 # =========================================
 
-TEST_MODE = True
+TEST_MODE = False
 
 ROME_TZ = pytz.timezone("Europe/Rome")
 
@@ -17,17 +15,73 @@ BASE_URL = "https://UgoMusmeci.github.io/carlentini-rifiuti-rss"
 FEED_TITLE = "Comune di Carlentini - Raccolta differenziata"
 
 # =========================================
+# NOMI GIORNI E MESI IN ITALIANO
+# =========================================
+
+DAY_NAMES = {
+    0: "Lunedì",
+    1: "Martedì",
+    2: "Mercoledì",
+    3: "Giovedì",
+    4: "Venerdì",
+    5: "Sabato",
+    6: "Domenica"
+}
+
+MONTH_NAMES = {
+    1: "gennaio",
+    2: "febbraio",
+    3: "marzo",
+    4: "aprile",
+    5: "maggio",
+    6: "giugno",
+    7: "luglio",
+    8: "agosto",
+    9: "settembre",
+    10: "ottobre",
+    11: "novembre",
+    12: "dicembre"
+}
+
+# =========================================
 # CALENDARIO RACCOLTA
 # =========================================
 
 WASTE_SCHEDULE = {
-    0: ("🍂 Umido", "Si ricorda di esporre l'umido entro le ore 6:00-8:00."),
-    1: ("📦 Carta e cartone", "Si ricorda di esporre carta e cartone entro le ore 6:00-8:00."),
-    2: ("♻️ Vetro e alluminio", "Si ricorda di esporre vetro e alluminio entro le ore 6:00-8:00."),
-    3: ("🗑️ Secco residuo", "Si ricorda di esporre il secco residuo entro le ore 6:00-8:00."),
-    4: ("🟡 Plastica", "Si ricorda di esporre la plastica entro le ore 6:00-8:00."),
-    5: ("🍂 Umido", "Si ricorda di esporre l'umido entro le ore 6:00-8:00."),
-    6: ("✅ Nessun conferimento", "Domani non è previsto alcun conferimento.")
+    0: (
+        "🍂 Raccolta umido",
+        "Si ricorda di esporre l'umido entro le ore 6:00-8:00."
+    ),
+
+    1: (
+        "📦 Raccolta carta e cartone",
+        "Si ricorda di esporre carta e cartone entro le ore 6:00-8:00."
+    ),
+
+    2: (
+        "♻️ Raccolta vetro e alluminio",
+        "Si ricorda di esporre vetro e alluminio entro le ore 6:00-8:00."
+    ),
+
+    3: (
+        "🗑️ Raccolta secco residuo",
+        "Si ricorda di esporre il secco residuo entro le ore 6:00-8:00."
+    ),
+
+    4: (
+        "🟡 Raccolta plastica",
+        "Si ricorda di esporre la plastica entro le ore 6:00-8:00."
+    ),
+
+    5: (
+        "🍂 Raccolta umido",
+        "Si ricorda di esporre l'umido entro le ore 6:00-8:00."
+    ),
+
+    6: (
+        "✅ Nessun conferimento",
+        "Domani non è previsto alcun conferimento."
+    )
 }
 
 # =========================================
@@ -36,7 +90,9 @@ WASTE_SCHEDULE = {
 
 now = datetime.now(ROME_TZ)
 
-weekday = now.weekday()
+tomorrow = now + timedelta(days=1)
+
+weekday = tomorrow.weekday()
 
 # =========================================
 # TEST MODE
@@ -57,9 +113,22 @@ if TEST_MODE:
 
 else:
 
-    title, description = WASTE_SCHEDULE[weekday]
+    waste_title, description = WASTE_SCHEDULE[weekday]
 
-    unique_id = now.strftime("%Y%m%d")
+    day_name = DAY_NAMES[weekday]
+
+    formatted_date = (
+        f"{day_name} "
+        f"{tomorrow.day} "
+        f"{MONTH_NAMES[tomorrow.month]}"
+    )
+
+    title = f"{waste_title} - {formatted_date}"
+
+    unique_id = (
+        f"{tomorrow.strftime('%Y%m%d')}-"
+        f"{weekday}"
+    )
 
 # =========================================
 # GENERAZIONE FEED
@@ -71,11 +140,16 @@ fg.title(FEED_TITLE)
 
 fg.link(href=BASE_URL)
 
-fg.description("Feed automatico raccolta differenziata Comune di Carlentini")
+fg.description(
+    "Feed automatico raccolta differenziata Comune di Carlentini"
+)
 
 fg.language("it")
 
+# =========================================
 # ITEM
+# =========================================
+
 fe = fg.add_entry()
 
 entry_link = f"{BASE_URL}/news/{unique_id}"

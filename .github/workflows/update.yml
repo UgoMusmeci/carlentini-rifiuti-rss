@@ -2,7 +2,7 @@ name: Update RSS Feed
 
 on:
   schedule:
-    - cron: "*/10 * * * *"
+    - cron: "0 18 * * *"
 
   workflow_dispatch:
 
@@ -37,6 +37,6 @@ jobs:
 
           git add feed.xml
 
-          git commit -m "Update RSS feed" || echo "No changes to commit"
+          git commit -m "Aggiornamento automatico feed RSS" || echo "Nessuna modifica"
 
           git push
