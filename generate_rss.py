@@ -54,12 +54,12 @@ WASTE_SCHEDULE = {
     ),
 
     1: (
-        "Raccolta Differenziata - Stasera esporre carta e cartone",
+        "Raccolta Differenziata - Stasera esporre carta, cartone e alluminio",
         "Si ricorda di esporre carta e cartone entro le ore 8:00 di domani."
     ),
 
     2: (
-        "Raccolta Differenziata - Stasera esporre vetro e alluminio",
+        "Raccolta Differenziata - Stasera esporre vetro e umido",
         "Si ricorda di esporre vetro e alluminio entro le ore 8:00 di domani."
     ),
 
