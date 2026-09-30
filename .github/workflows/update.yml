@@ -2,7 +2,7 @@ name: Update RSS Feed
 
 on:
   schedule:
-    - cron: "15 16 * * *"
+    - cron: "14 15 * * *"
       timezone: "Europe/Rome"
 
   workflow_dispatch:
